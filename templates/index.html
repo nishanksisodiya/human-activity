@@ -10,6 +10,8 @@
 	<h1>Accelerometer raw data</h1>
 	<div id="accl"></div>
 	<script>
+		navigator.permissions.query({name:'gyroscope'}).then(function(result) { console.log(result.state); });
+		navigator.permissions.query({name:'accelerometer'}).then(function(result) { console.log(result.state); });
 		let status = document.getElementById('gyro');
 		if ( 'Gyroscope' in window ) {
 			let gyro = new Gyroscope();
