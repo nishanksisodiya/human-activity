@@ -12,8 +12,7 @@ def index():
 def uploadData():
 	if request.method == 'POST':
 		content = request.get_json();
-		with open('data.json', 'w', encoding='utf-8') as f:
-    		json.dump(content, f, ensure_ascii=False, indent=4)
+		print(content)
 
 
 if __name__ == '__main__':
