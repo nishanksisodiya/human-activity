@@ -9,29 +9,7 @@
 	<div id="gyro"></div>
 	<h1>Accelerometer raw data</h1>
 	<div id="accl"></div>
-	<script>
-		navigator.permissions.query({name:'gyroscope'}).then(function(result) { console.log(result.state); });
-		navigator.permissions.query({name:'accelerometer'}).then(function(result) { console.log(result.state); });
-		let status = document.getElementById('gyro');
-		if ( 'Gyroscope' in window ) {
-			let gyro = new Gyroscope();
-			gyro.addEventListener('reading', function(e) {
-				status.innerHTML = 'x: ' + e.target.x + '<br> y: ' + e.target.y + '<br> z: ' + e.target.z;
-			});
-			gyro.start();
-		}
-		else status.innerHTML = 'Gyroscope not supported';
-
-		let accelero = document.getElementById('accl');
-		if ( 'Accelerometer' in window ) {
-			let accl = new Accelerometer();
-			accl.addEventListener('reading', function(e) {
-				accelero.innerHTML = 'x: ' + e.target.x + '<br> y: ' + e.target.y + '<br> z: ' + e.target.z;
-			});
-			accl.start();
-		}
-		else accelero.innerHTML = 'Accelerometer not supported';
-	</script>
+	<script type="text/javascript" src="{{ url_for(static , filename = 'js/index.js') }}"></script>
 
 
 </body>

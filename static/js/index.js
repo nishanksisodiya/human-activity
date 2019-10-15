@@ -1,12 +1,19 @@
- let status = document.getElementById('status');
- if ( 'Gyroscope' in window ) {
- 	let sensor = new Gyroscope();
- 	sensor.addEventListener('reading', function(e) 
- 	{
- 		document.getElementById('x').innerHTML = "x: " + e.target.x;
- 		document.getElementById('y').innerHTML = "y: " + e.target.y;
- 		document.getElementById('z').innerHTML = "z: " + e.target.z;
- 	});
- 	sensor.start();
- }
- else document.getElementById('error').innerHTML = 'Gyroscope not supported';
+let status = document.getElementById('gyro');
+if ( 'Gyroscope' in window ) {
+	let gyro = new Gyroscope();
+	gyro.addEventListener('reading', function(e) {
+		status.innerHTML = 'x: ' + e.target.x + '<br> y: ' + e.target.y + '<br> z: ' + e.target.z;
+	});
+	gyro.start();
+}
+else status.innerHTML = 'Gyroscope not supported';
+
+let accelero = document.getElementById('accl');
+if ( 'Accelerometer' in window ) {
+	let accl = new Accelerometer();
+	accl.addEventListener('reading', function(e) {
+		accelero.innerHTML = 'x: ' + e.target.x + '<br> y: ' + e.target.y + '<br> z: ' + e.target.z;
+	});
+	accl.start();
+}
+else accelero.innerHTML = 'Accelerometer not supported';
