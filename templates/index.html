@@ -1,0 +1,35 @@
+<html>
+<head>
+	<title>Gyroscope </title>  
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+</head>
+<body>
+	<h1>Gyropscope raw data</h1>
+	<div id="gyro"></div>
+	<div id="accl"></div>
+	<script>
+		let status = document.getElementById('gyro');
+		if ( 'Gyroscope' in window ) {
+			let gyro = new Gyroscope();
+			gyro.addEventListener('reading', function(e) {
+				status.innerHTML = 'x: ' + e.target.x + '<br> y: ' + e.target.y + '<br> z: ' + e.target.z;
+			});
+			gyro.start();
+		}
+		else status.innerHTML = 'Gyroscope not supported';
+
+		let accelero = document.getElementById('accl');
+		if ( 'Accelerometer' in window ) {
+			let accl = new Accelerometer();
+			accl.addEventListener('reading', function(e) {
+				accelero.innerHTML = 'x: ' + e.target.x + '<br> y: ' + e.target.y + '<br> z: ' + e.target.z;
+			});
+			accl.start();
+		}
+		else status.innerHTML = 'Accelerometer not supported';
+	</script>
+
+
+</body>
+</html>
