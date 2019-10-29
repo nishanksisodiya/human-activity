@@ -1,0 +1,70 @@
+<!doctype html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Human Activity - home</title>
+	<link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+	<link href="[% url_for('static',filename='css/style.css') %]" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+<body>
+	<div v-cloak id="app">
+		<v-app>
+			<v-navigation-drawer v-model="drawer" app clipped>
+				<v-list dense>
+					<v-list-item link>
+						<v-list-item-action>
+							<v-icon>mdi-run-fast</v-icon>
+						</v-list-item-action>
+						<v-list-item-content>
+							<v-list-item-title>Activity Recognition</v-list-item-title>
+						</v-list-item-content>
+					</v-list-item>
+					<v-list-item link>
+						<v-list-item-action>
+							<v-icon>mdi-code-greater-than</v-icon>
+						</v-list-item-action>
+						<v-list-item-content>
+							<v-list-item-title>About Project</v-list-item-title>
+						</v-list-item-content>
+					</v-list-item>
+					<v-list-item link>
+						<v-list-item-action>
+							<v-icon>mdi-account-multiple</v-icon>
+						</v-list-item-action>
+						<v-list-item-content>
+							<v-list-item-title>About Team</v-list-item-title>
+						</v-list-item-content>
+					</v-list-item>
+				</v-list>
+			</v-navigation-drawer>
+
+			<v-app-bar app clipped-left>
+				<v-toolbar-title>Human Activity Recognition</v-toolbar-title>
+			</v-app-bar>
+
+			<v-content>
+				<v-container class="fill-height" fluid>
+					<v-row align="center" justify="center">
+						<v-col>
+							{{gyro}}
+						</v-col>
+					</v-row>
+					<v-row align="center" justify="center">
+						<v-col>
+							{{accel}}
+						</v-col>
+					</v-row>
+				</v-container>
+			</v-content>
+		</v-app>
+	</div>
+
+	<!-- Scripts go below this line -->
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+	<script src="[% url_for('static', filename='js/script.js') %]"></script>
+</body>
+</html>
