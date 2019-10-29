@@ -1,4 +1,4 @@
-var gyroData, accelData;
+var gyroData = {name:'Gyroscope', x: 0, y: 0, z: 0}, accelData = {name:'Accelerometer', x: 0, y: 0, z: 0};
 
 var app = new Vue({
 	el: '#app',
@@ -26,7 +26,6 @@ if ( 'Gyroscope' in window ) {
 	gyro.addEventListener('reading', function(e) {
 		gyroData = {name:'Gyroscope', x: e.target.x, y: e.target.y, z: e.target.z};
 		console.log(gyroData);
-		app.nextTick();
 	});
 	gyro.start();
 }
@@ -35,7 +34,6 @@ if ( 'Accelerometer' in window ) {
 	accl.addEventListener('reading', function(e) {
 		accelData =  {name:'Accelerometer', x: e.target.x, y: e.target.y, z: e.target.z};
 		console.log(accelData);
-		app.nextTick();
 	});
 	accl.start();
 }
