@@ -3,7 +3,7 @@ var gyroData, accelData;
 if ( 'Gyroscope' in window ) {
 	let gyro = new Gyroscope();
 	gyro.addEventListener('reading', function(e) {
-		gyroData = {e.target.x, e.target.y, e.target.z};
+		gyroData = {x: e.target.x, y: e.target.y, z: e.target.z};
 		console.log(gyroData);
 	});
 	gyro.start();
@@ -11,7 +11,7 @@ if ( 'Gyroscope' in window ) {
 if ( 'Accelerometer' in window ) {
 	let accl = new Accelerometer();
 	accl.addEventListener('reading', function(e) {
-		accelData =  {e.target.x, e.target.y, e.target.z};
+		accelData =  {x: e.target.x, y: e.target.y, z: e.target.z};
 		console.log(accelData);
 	});
 	accl.start();
