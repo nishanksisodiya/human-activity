@@ -11,7 +11,7 @@
 <body>
 	<div v-cloak id="app">
 		<v-app>
-			<v-navigation-drawer v-model="drawer" app clipped>
+			<v-navigation-drawer app clipped>
 				<v-list dense>
 					<v-list-item link>
 						<v-list-item-action>
@@ -47,9 +47,7 @@
 			<v-content>
 				<v-container class="fill-height" fluid>
 					<v-row align="center" justify="center">
-						<v-data-table :headers="headers" :items="sensor">
-							
-						</v-data-table>
+						<v-data-table :headers="headers" :items="sensor"></v-data-table>
 					</v-row>
 				</v-container>
 			</v-content>
