@@ -16,6 +16,13 @@ var app = new Vue({
 		],
 		sensor: [gyroData, accelData],
 	},
+	methods: {
+		updateMData: function ()
+		{
+			this.sensor = [gyroData, accelData];
+			this.$nextTick();
+		}
+	},
 	vuetify: new Vuetify({
 		theme: { dark: true },
 	}),
