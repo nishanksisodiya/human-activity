@@ -3,14 +3,16 @@ var gyroData, accelData;
 if ( 'Gyroscope' in window ) {
 	let gyro = new Gyroscope();
 	gyro.addEventListener('reading', function(e) {
-		gyroData = e.target;
+		gyroData = {e.target.x,e.target.y,e.target.z};
+		console.log(gyroData);
 	});
 	gyro.start();
 }
 if ( 'Accelerometer' in window ) {
 	let accl = new Accelerometer();
 	accl.addEventListener('reading', function(e) {
-		accelData =  e.target;
+		accelData =  {e.target.x,e.target.y,e.target.z};
+		console.log(accelData);
 	});
 	accl.start();
 }
