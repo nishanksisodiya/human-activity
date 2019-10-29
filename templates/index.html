@@ -47,14 +47,9 @@
 			<v-content>
 				<v-container class="fill-height" fluid>
 					<v-row align="center" justify="center">
-						<v-col>
-							{{gyro}}
-						</v-col>
-					</v-row>
-					<v-row align="center" justify="center">
-						<v-col>
-							{{accel}}
-						</v-col>
+						<v-data-table :headers="headers" :items="desserts">
+							
+						</v-data-table>
 					</v-row>
 				</v-container>
 			</v-content>

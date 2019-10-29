@@ -3,7 +3,7 @@ var gyroData, accelData;
 if ( 'Gyroscope' in window ) {
 	let gyro = new Gyroscope();
 	gyro.addEventListener('reading', function(e) {
-		gyroData = {x: e.target.x, y: e.target.y, z: e.target.z};
+		gyroData = {name:'Gyroscope', x: e.target.x, y: e.target.y, z: e.target.z};
 		console.log(gyroData);
 	});
 	gyro.start();
@@ -11,7 +11,7 @@ if ( 'Gyroscope' in window ) {
 if ( 'Accelerometer' in window ) {
 	let accl = new Accelerometer();
 	accl.addEventListener('reading', function(e) {
-		accelData =  {x: e.target.x, y: e.target.y, z: e.target.z};
+		accelData =  {name:'Accelerometer', x: e.target.x, y: e.target.y, z: e.target.z};
 		console.log(accelData);
 	});
 	accl.start();
@@ -20,8 +20,18 @@ if ( 'Accelerometer' in window ) {
 var app = new Vue({
 	el: '#app',
 	data: {
-		gyro: gyroData,
-		accel: accelData,
+		headers: [
+		{
+			text: 'Sensor',
+			align: 'left',
+			sortable: false,
+			value: 'name',
+		},
+		{ text: 'X', value: 'x'},
+		{ text: 'Y', value: 'y' },
+		{ text: 'Z', value: 'z' },
+		],
+		sensor: [gyroData, accelData],
 	},
 	vuetify: new Vuetify({
 		theme: { dark: true },
