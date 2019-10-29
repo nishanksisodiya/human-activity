@@ -52,15 +52,22 @@
 						:items="sensor"
 						:hide-default-footer="true"></v-data-table>
 					</v-row>
-				</v-container>
-			</v-content>
-		</v-app>
-	</div>
+					<v-row align="center" justify="center">
+						<v-alert text
+						color="success"
+						class="subtitle-2">
+						{{activity}}
+					</v-alert>
+				</v-row>
+			</v-container>
+		</v-content>
+	</v-app>
+</div>
 
-	<!-- Scripts go below this line -->
+<!-- Scripts go below this line -->
 
-	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
-	<script src="[% url_for('static', filename='js/script.js') %]"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+<script src="[% url_for('static', filename='js/script.js') %]"></script>
 </body>
 </html>

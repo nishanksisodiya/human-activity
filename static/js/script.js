@@ -9,12 +9,14 @@ var app = new Vue({
 			align: 'left',
 			sortable: false,
 			value: 'name',
+			width: '30%',
 		},
-		{ text: 'X', value: 'x'},
-		{ text: 'Y', value: 'y' },
-		{ text: 'Z', value: 'z' },
+		{ text: 'X', value: 'x', width: '10%'},
+		{ text: 'Y', value: 'y', width: '10%'},
+		{ text: 'Z', value: 'z', width: '10%'},
 		],
 		sensor: [gyroData, accelData],
+		activity: 'Idle'
 	},
 	methods: {
 		updateData: async function ()
