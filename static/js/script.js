@@ -1,4 +1,4 @@
-var gyroData = 'Gyroscope Not Supported', accelData = 'Accelerometer Not Supported';
+var gyroData, accelData;
 
 if ( 'Gyroscope' in window ) {
 	let gyro = new Gyroscope();
