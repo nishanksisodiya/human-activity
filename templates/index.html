@@ -47,7 +47,11 @@
 			<v-content>
 				<v-container class="fill-height" fluid>
 					<v-row align="center" justify="center">
-						<v-data-table :headers="headers" :items="sensor"></v-data-table>
+						<v-data-table
+						:headers="headers"
+						:items="sensor"
+						:hide-default-header="true"
+						:hide-default-footer="true"></v-data-table>
 					</v-row>
 				</v-container>
 			</v-content>
