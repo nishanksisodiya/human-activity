@@ -32,6 +32,7 @@ if ( 'Gyroscope' in window ) {
 	let gyro = new Gyroscope();
 	gyro.addEventListener('reading', function(e) {
 		gyroData = {name:'Gyroscope', x: e.target.x, y: e.target.y, z: e.target.z};
+		app.updateData();
 	});
 	gyro.start();
 }
@@ -39,6 +40,7 @@ if ( 'Accelerometer' in window ) {
 	let accl = new Accelerometer();
 	accl.addEventListener('reading', function(e) {
 		accelData =  {name:'Accelerometer', x: e.target.x, y: e.target.y, z: e.target.z};
+		app.updateData();
 	});
 	accl.start();
 }
