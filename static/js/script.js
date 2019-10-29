@@ -1,24 +1,5 @@
 var gyroData, accelData;
 
-if ( 'Gyroscope' in window ) {
-	let gyro = new Gyroscope();
-	gyro.addEventListener('reading', function(e) {
-		gyroData = {name:'Gyroscope', x: e.target.x, y: e.target.y, z: e.target.z};
-		console.log(gyroData);
-		Vue.nextTick();
-	});
-	gyro.start();
-}
-if ( 'Accelerometer' in window ) {
-	let accl = new Accelerometer();
-	accl.addEventListener('reading', function(e) {
-		accelData =  {name:'Accelerometer', x: e.target.x, y: e.target.y, z: e.target.z};
-		console.log(accelData);
-		Vue.nextTick();
-	});
-	accl.start();
-}
-
 var app = new Vue({
 	el: '#app',
 	data: {
@@ -39,3 +20,22 @@ var app = new Vue({
 		theme: { dark: true },
 	}),
 });
+
+if ( 'Gyroscope' in window ) {
+	let gyro = new Gyroscope();
+	gyro.addEventListener('reading', function(e) {
+		gyroData = {name:'Gyroscope', x: e.target.x, y: e.target.y, z: e.target.z};
+		console.log(gyroData);
+		app.nextTick();
+	});
+	gyro.start();
+}
+if ( 'Accelerometer' in window ) {
+	let accl = new Accelerometer();
+	accl.addEventListener('reading', function(e) {
+		accelData =  {name:'Accelerometer', x: e.target.x, y: e.target.y, z: e.target.z};
+		console.log(accelData);
+		app.nextTick();
+	});
+	accl.start();
+}
