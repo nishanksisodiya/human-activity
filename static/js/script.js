@@ -17,10 +17,10 @@ var app = new Vue({
 		sensor: [gyroData, accelData],
 	},
 	methods: {
-		updateMData: function ()
+		updateData: async function ()
 		{
 			this.sensor = [gyroData, accelData];
-			this.$nextTick();
+			await this.$nextTick();
 		}
 	},
 	vuetify: new Vuetify({
@@ -32,7 +32,6 @@ if ( 'Gyroscope' in window ) {
 	let gyro = new Gyroscope();
 	gyro.addEventListener('reading', function(e) {
 		gyroData = {name:'Gyroscope', x: e.target.x, y: e.target.y, z: e.target.z};
-		console.log(gyroData);
 	});
 	gyro.start();
 }
@@ -40,7 +39,6 @@ if ( 'Accelerometer' in window ) {
 	let accl = new Accelerometer();
 	accl.addEventListener('reading', function(e) {
 		accelData =  {name:'Accelerometer', x: e.target.x, y: e.target.y, z: e.target.z};
-		console.log(accelData);
 	});
 	accl.start();
 }
