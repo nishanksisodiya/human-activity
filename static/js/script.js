@@ -1,7 +1,31 @@
 var gyroData = {name:'Gyroscope', x: 0, y: 0, z: 0}, accelData = {name:'Accelerometer', x: 0, y: 0, z: 0};
 
+const recognition = { template: `<v-row align="center" justify="center">
+						<v-data-table
+						:headers="$parent.$parent.$parent.headers"
+						:items="$parent.$parent.$parent.sensor"
+						:hide-default-footer="true"></v-data-table>
+					</v-row>
+					<v-row align="center" justify="center">
+						<v-alert text
+						color="success"
+						class="subtitle-2">{{$parent.$parent.$parent.activity}}</v-alert>
+					</v-row>`};
+const about = { template: '<div>About Project</div>' };
+const team = { template: '<div>About Team</div>' };
+
+const routes = [
+{ path: '/', component: recognition },
+{ path: '/about', component: about },
+{ path: '/team', component: team },
+];
+const router = new VueRouter({
+	routes: routes,
+});
+
 var app = new Vue({
 	el: '#app',
+	router,
 	data: {
 		headers: [
 		{
@@ -11,13 +35,31 @@ var app = new Vue({
 			value: 'name',
 			width: '30%',
 		},
-		{ text: 'X', value: 'x', width: '10%'},
-		{ text: 'Y', value: 'y', width: '10%'},
-		{ text: 'Z', value: 'z', width: '10%'},
+		{ text: 'X', value: 'x', width: '15%'},
+		{ text: 'Y', value: 'y', width: '15%'},
+		{ text: 'Z', value: 'z', width: '15%'},
 		],
 		sensor: [gyroData, accelData],
-		activity: 'Idle'
+		activity: 'Idle',
+		items: [
+		{
+			action: 'mdi-run-fast',
+			title: 'Activity Recognition',
+			path: '/',
+		},
+		{
+			action: 'mdi-code-greater-than',
+			title: 'About Project',
+			path: '/about',
+		},
+		{
+			action: 'mdi-account-multiple',
+			title: 'About Team',
+			path: '/team',
+		}
+		],
 	},
+	model: 1,
 	methods: {
 		updateData: async function ()
 		{
