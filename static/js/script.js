@@ -1,18 +1,26 @@
 var gyroData = {name:'Gyroscope', x: 0, y: 0, z: 0}, accelData = {name:'Accelerometer', x: 0, y: 0, z: 0};
 
-const recognition = { template: `<v-row align="center" justify="center">
-						<v-data-table
-						:headers="$parent.$parent.$parent.headers"
-						:items="$parent.$parent.$parent.sensor"
-						:hide-default-footer="true"></v-data-table>
-					</v-row>
-					<v-row align="center" justify="center">
-						<v-alert text
-						color="success"
-						class="subtitle-2">{{$parent.$parent.$parent.activity}}</v-alert>
-					</v-row>`};
-const about = { template: '<div>About Project</div>' };
-const team = { template: '<div>About Team</div>' };
+const recognition = { template: `
+<v-container class="fill-height" fluid>
+	<v-row align="center" justify="center">
+		<v-data-table
+		:headers="$parent.$parent.$parent.headers"
+		:items="$parent.$parent.$parent.sensor"
+		:hide-default-footer="true"></v-data-table>
+	</v-row>
+	<v-row align="center" justify="center">
+		<v-alert text
+		color="success"
+		class="subtitle-2">{{$parent.$parent.$parent.activity}}</v-alert>
+	</v-row>
+</v-container>
+`};
+const about = { template: `<v-container class="fill-height" fluid>
+<div>About Project</div>
+</v-container>` };
+const team = { template: `<v-container class="fill-height" fluid>
+<div>About Team</div>
+</v-container>` };
 
 const routes = [
 { path: '/', component: recognition },
