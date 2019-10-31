@@ -17,6 +17,7 @@ def index():
 def pred_act():
 	if request.method == 'POST':
 		print(request.data)
+		return request.data
 
 
 if __name__ == '__main__':
