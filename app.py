@@ -1,5 +1,5 @@
 from flask import Flask, render_template, Response, jsonify, request
-import predict
+from predict import get_result
 
 app = Flask(__name__)
 jinja_options = app.jinja_options.copy()
