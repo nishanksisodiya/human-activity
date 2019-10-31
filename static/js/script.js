@@ -38,8 +38,8 @@ const team = { template: `
 					max-width="300"
 					class="img-circle"
 				></v-img>
-				<v-card-title class="justify-center">{{member.name}}</v-card-title>
-				<v-card-actions class="justify-center">
+				<v-card-title class="justify-center pb-0">{{member.name}}</v-card-title>
+				<v-card-actions class="justify-center pt-0">
 					<v-btn icon :href="member.github">
 						<v-icon>mdi-github-circle</v-icon>
 					</v-btn>
