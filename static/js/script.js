@@ -153,7 +153,7 @@ if ( 'Accelerometer' in window ) {
 		accelArray.push([e.target.x, e.target.y, e.target.z]);
 		if(accelArray.length == 200)
 		{
-			.$ajax({
+			$.ajax({
 				url: "/predictaction",
 				type: "POST",
 				data:  accelArray,
