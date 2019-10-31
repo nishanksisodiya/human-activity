@@ -1,6 +1,9 @@
 import pandas as pandas
 import numpy as np
 import tensorflow as tf
+from warnings import filterwarnings
+
+filterwarnings('ignore')
 
 def get_result(inputs_batch):
 	LABELS = ['Downstairs', 'Jogging', 'Sitting', 'Standing', 'Upstairs', 'Walking']
