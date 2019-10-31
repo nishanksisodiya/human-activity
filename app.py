@@ -16,8 +16,8 @@ def index():
 @app.route('/predictaction', methods = ['POST'])
 def pred_act():
 	if request.method == 'POST':
-		print(request.data)
-		return request.data
+		print(type(request.data))
+		return 'Active'
 
 
 if __name__ == '__main__':
