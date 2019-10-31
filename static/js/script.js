@@ -81,7 +81,7 @@ var app = new Vue({
 		{ text: 'Y', value: 'y', width: '15%'},
 		{ text: 'Z', value: 'z', width: '15%'},
 		],
-		sensor: [gyroData, accelData],
+		sensor: [accelData],
 		activity: 'Idle',
 		items: [
 		{
@@ -125,7 +125,12 @@ var app = new Vue({
 	methods: {
 		updateData: async function ()
 		{
-			this.sensor = [gyroData, accelData];
+			this.sensor = [accelData];
+			await this.$nextTick();
+		},
+		updateActivity: async function (act) 
+		{
+			this.activity = act;
 			await this.$nextTick();
 		}
 	},
@@ -133,35 +138,36 @@ var app = new Vue({
 		theme: { dark: true },
 	}),
 });
-
-if ( 'Gyroscope' in window ) {
-	let gyro = new Gyroscope();
-	gyro.addEventListener('reading', function(e) {
-		gyroData = {name:'Gyroscope', x: e.target.x, y: e.target.y, z: e.target.z};
-		app.updateData();
-	});
-	gyro.start();
-}
+// if ( 'Gyroscope' in window ) {
+// 	let gyro = new Gyroscope();
+// 	gyro.addEventListener('reading', function(e) {
+// 		gyroData = {name:'Gyroscope', x: e.target.x, y: e.target.y, z: e.target.z};
+// 		app.updateData();
+// 	});
+// 	gyro.start();
+// }
 if ( 'Accelerometer' in window ) {
-	let accl = new Accelerometer();
+	let accl = new Accelerometer({ frequency: 50 });
 	accl.addEventListener('reading', function(e) {
 		accelData =  {name:'Accelerometer', x: e.target.x, y: e.target.y, z: e.target.z};
 		accelArray.push([e.target.x, e.target.y, e.target.z]);
+		if(accelArray.length == 200)
+		{
+			.$ajax({
+				url: "/predictaction",
+				type: "POST",
+				data:  accelArray,
+				contentType: false,
+				cache: false,
+				processData:false,
+				success: function(data)
+				{
+					app.updateActivity(data);
+					accelArray = [];
+				}
+			});
+		}
 		app.updateData();
 	});
 	accl.start();
-}
-
-function showArray(n)
-{
-	console.log('[');
-	for (var i = 0; i < n; i++) {
-		console.log('[');
-		for (var j = 0; j < 3; j++) 
-		{
-			console.log(accelArray[i][j] + ',');
-		}
-		console.log(']');
-	}
-	console.log('],');
 }
