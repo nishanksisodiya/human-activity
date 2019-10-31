@@ -152,7 +152,16 @@ if ( 'Accelerometer' in window ) {
 	accl.start();
 }
 
-if(accelArray.length == 80)
+showArray()
 {
-	console.log(accelArray);
+	console.log('[');
+	for (var i = 0; i < 80; i++) {
+		console.log('[');
+		for (var j = 0; i < 3; i++) 
+		{
+			console.log(accelArray[i][j] + ',');
+		}
+		console.log(']');
+	}
+	console.log(']');
 }
