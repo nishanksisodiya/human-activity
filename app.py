@@ -18,8 +18,8 @@ def pred_act():
 	if request.method == 'POST':
 		accel_data =  request.data.decode("utf-8") 
 		accel_data = list(map(float, accel_data.split(',')))
-		print(type(accel_data[0]))
-		return 'Active'
+		res = get_result(accel_data)
+		return res
 
 
 if __name__ == '__main__':
