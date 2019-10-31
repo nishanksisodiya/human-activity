@@ -6,7 +6,7 @@ from warnings import filterwarnings
 filterwarnings('ignore')
 
 def get_result(inputs_batch):
-	LABELS = ['Downstairs', 'Jogging', 'Sitting', 'Standing', 'Upstairs', 'Walking']
+	LABELS = ['Idle', 'Jogging', 'Downstairs', 'Standing', 'Upstairs', 'Walking']
 	frozen_graph = "./frozen_har.pb"
 	with tf.gfile.GFile(frozen_graph, "rb") as f:
 		restored_graph_def = tf.GraphDef()

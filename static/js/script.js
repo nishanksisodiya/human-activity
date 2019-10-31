@@ -153,17 +153,19 @@ if ( 'Accelerometer' in window ) {
 		accelArray.push([e.target.x, e.target.y, e.target.z]);
 		if(accelArray.length == 200)
 		{
+			console.log('yaha');
+			var sData = accelArray;
+			accelArray = []
 			$.ajax({
 				url: "/predictaction",
 				type: "POST",
-				data:  accelArray,
+				data:  sData,
 				contentType: false,
 				cache: false,
 				processData:false,
 				success: function(data)
 				{
 					app.updateActivity(data);
-					accelArray = [];
 				}
 			});
 		}
