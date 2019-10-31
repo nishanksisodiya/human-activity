@@ -15,12 +15,44 @@ const recognition = { template: `
 	</v-row>
 </v-container>
 `};
-const about = { template: `<v-container class="fill-height" fluid>
-<div>About Project</div>
-</v-container>` };
-const team = { template: `<v-container class="fill-height" fluid>
-<div>About Team</div>
-</v-container>` };
+
+
+const about = { template: `
+<v-container class="fill-height" fluid>
+	<div>About Team</div>
+</v-container>
+` };
+
+const team = { template: `
+<v-container class="fill-height" fluid>
+	<v-row class="mb-4" no-gutters>
+		<v-col v-for="member in $parent.$parent.$parent.members">
+			<v-card class="transparent" elevation=0 align="center" justify="center">
+				<v-img
+					:src="member.img"
+					:lazy-src="member.img"
+					aspect-ratio="1"
+					height="300"
+					max-height="300"
+					width="300"
+					max-width="300"
+					class="img-circle"
+				></v-img>
+				<v-card-title class="justify-center">{{member.name}}</v-card-title>
+				<v-card-actions class="justify-center">
+					<v-btn icon :href="member.github">
+						<v-icon>mdi-github-circle</v-icon>
+					</v-btn>
+
+					<v-btn icon :href="member.linkedin">
+						<v-icon>mdi-linkedin</v-icon>
+					</v-btn>
+				</v-card-actions>
+			</v-card>
+		</v-col>
+	</v-row>
+</v-container>`
+};
 
 const routes = [
 { path: '/', component: recognition },
@@ -65,6 +97,26 @@ var app = new Vue({
 			title: 'About Team',
 			path: '/team',
 		}
+		],
+		members: [
+			{
+				name: 'Lalit Meena',
+				img: './static/img/lalit.jpg',
+				github: 'https://github.com/scleaverzer0ne',
+				linkedin: 'https://www.linkedin.com/in/lalitmeena/',
+			},
+			{
+				name: 'Mohit Mourya',
+				img: './static/img/mohit.jpg',
+				github: 'https://github.com/mohitmourya',
+				linkedin: 'https://www.linkedin.com/in/mohit-mourya/',
+			},
+			{
+				name: 'Nishank Singh Sisodiya',
+				img: './static/img/nishank.jpg',
+				github: 'https://github.com/nishanksisodiya',
+				linkedin: 'https://www.linkedin.com/in/nishanksisodiya/',
+			},
 		],
 	},
 	model: 1,
