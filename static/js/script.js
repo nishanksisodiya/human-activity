@@ -1,5 +1,5 @@
 var gyroData = {name:'Gyroscope', x: 0, y: 0, z: 0}, accelData = {name:'Accelerometer', x: 0, y: 0, z: 0};
-
+var accelArray = [];
 const recognition = { template: `
 <v-container class="fill-height" fluid>
 	<v-row align="center" justify="center">
@@ -18,8 +18,11 @@ const recognition = { template: `
 
 
 const about = { template: `
-<v-container class="fill-height" fluid>
-	<div>About Team</div>
+<v-container>
+	<h2>Whats is Human Activity Recognizer?</h2>
+	<p>Human activity recognition is the problem of classifying sequences of accelerometer data recorded by specialized harnesses or smart phones into known well-defined movements.
+	<br><br>
+It is a challenging problem given the large number of observations produced each second, the temporal nature of the observations, and the lack of a clear way to relate accelerometer data to known movements.</p>
 </v-container>
 ` };
 
@@ -62,7 +65,6 @@ const routes = [
 const router = new VueRouter({
 	routes: routes,
 });
-
 var app = new Vue({
 	el: '#app',
 	router,
@@ -100,16 +102,16 @@ var app = new Vue({
 		],
 		members: [
 			{
-				name: 'Lalit Meena',
-				img: './static/img/lalit.jpg',
-				github: 'https://github.com/scleaverzer0ne',
-				linkedin: 'https://www.linkedin.com/in/lalitmeena/',
-			},
-			{
 				name: 'Mohit Mourya',
 				img: './static/img/mohit.jpg',
 				github: 'https://github.com/mohitmourya',
 				linkedin: 'https://www.linkedin.com/in/mohit-mourya/',
+			},
+			{
+				name: 'Lalit Meena',
+				img: './static/img/lalit.jpg',
+				github: 'https://github.com/scleaverzer0ne',
+				linkedin: 'https://www.linkedin.com/in/lalitmeena/',
 			},
 			{
 				name: 'Nishank Singh Sisodiya',
@@ -144,7 +146,13 @@ if ( 'Accelerometer' in window ) {
 	let accl = new Accelerometer();
 	accl.addEventListener('reading', function(e) {
 		accelData =  {name:'Accelerometer', x: e.target.x, y: e.target.y, z: e.target.z};
+		accelArray.push([e.target.x, e.target.y, e.target.z]);
 		app.updateData();
 	});
 	accl.start();
+}
+
+if(accelArray.length == 80)
+{
+	console.log(accelArray);
 }
