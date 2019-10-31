@@ -17,7 +17,7 @@ def index():
 def pred_act():
 	if request.method == 'POST':
 		accel_data =  request.data.decode("utf-8") 
-		accel_data = list(map(Decimal, accel_data.split(',')))
+		accel_data = list(map(float, accel_data.split(',')))
 		print(type(request.data))
 		return 'Active'
 
