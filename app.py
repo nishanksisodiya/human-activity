@@ -1,5 +1,8 @@
 from flask import Flask, render_template, Response, jsonify, request
 from predict import get_result
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
+warnings.filterwarnings("ignore")
 
 app = Flask(__name__)
 jinja_options = app.jinja_options.copy()
@@ -19,7 +22,7 @@ def pred_act():
 		accel_data =  request.data.decode("utf-8") 
 		accel_data = list(map(float, accel_data.split(',')))
 		res = get_result(accel_data)
-		return res
+		return jsonify(res)
 
 
 if __name__ == '__main__':
